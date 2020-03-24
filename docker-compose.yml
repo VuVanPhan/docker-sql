@@ -1,0 +1,31 @@
+version: '3'
+services:
+  mariadb:
+    image: 'bitnami/mariadb:10.3'
+    environment:
+      - MARIADB_ROOT_PASSWORD=mypass123
+    volumes:
+      - 'mariadb_data:/bitnami'
+  phpmyadmin:
+    image: 'bitnami/phpmyadmin:5'
+    ports:
+      - '80:80'
+      - '443:443'
+    depends_on:
+      - mariadb
+    volumes:
+      - 'phpmyadmin_data:/bitnami'
+volumes:
+  mariadb_data:
+    driver: local
+  phpmyadmin_data:
+    driver: local
+
+# link browser http://localhost
+# user : root
+# pass : mypass123
+
+## connect mariadb with docker 
+# docker exec -it docker-sql_mariadb_1 bash
+# mysql -uroot -p
+# enter pass : mypass123
