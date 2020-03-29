@@ -2,6 +2,10 @@
 # run docker-compose 
 docker-compose up -d
 
+# stops containers and removes containers, network, volumes, and images create by 'up'
+# clean up the data of a particular docker-compose stack
+docker-compose down -v --rmi all --remove-orphans
+
 # connet phpmyadmin 
 http://localhost
 
